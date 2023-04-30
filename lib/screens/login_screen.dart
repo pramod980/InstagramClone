@@ -27,16 +27,13 @@ class LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-      padding: EdgeInsets.symmetric(horizontal: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 32),
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //for spacing
-          Flexible(
-            child: Container(),
-            flex: 1,
-          ),
+          Flexible(flex: 1, child: Container()),
           //svg image
           SvgPicture.asset(
             'assets/ic_instagram.svg',
@@ -51,9 +48,10 @@ class LoginScreenState extends State<LoginScreen> {
           //email text field
           TextInputField(
               textEditingController: emailController,
-              hintText: "Enter username",
+              hintText: "Enter email",
               textInputType: TextInputType.emailAddress),
-          SizedBox(
+
+          const SizedBox(
             height: 24,
           ),
 
@@ -63,11 +61,49 @@ class LoginScreenState extends State<LoginScreen> {
             hintText: "Enter your password",
             textInputType: TextInputType.text,
             isPass: true,
-          )
+          ),
+
+          const SizedBox(
+            height: 24,
+          ),
 
           //login Button
+          InkWell(
+            child: Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                color: blueColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: const Text("Login"),
+            ),
+          ),
+
+          const SizedBox(
+            height: 12,
+          ),
+          Flexible(flex: 2, child: Container()),
 
           //signup transition
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: const Text("Don't have an account?")),
+              GestureDetector(
+                onTap: () => {},
+                child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: const Text(
+                      "Sign up.",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+              )
+            ],
+          )
         ],
       ),
     )));
